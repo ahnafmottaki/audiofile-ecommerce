@@ -1,3 +1,8 @@
+.container {
+  max-width: 1110px;
+  margin-inline: auto;
+}
+
 .overline {
   font-size: 0.875rem;
   letter-spacing: 10px;
@@ -53,4 +58,35 @@
 
 .link-button:hover {
   color: var(--color-primary);
+}
+
+.icon {
+  color: var(--color-white);
+  transition: color 0.2s linear;
+  cursor: pointer;
+}
+
+.icon:hover {
+  color: var(--color-primary);
+}
+
+@media screen and (max-width: 1150px) {
+  .container {
+    margin-inline: 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    margin-inline: 0;
+    padding-inline: 24px;
+  }
+}
+
+.none {
+  display: none;
+}
+
+.flex {
+  display: flex;
 }
