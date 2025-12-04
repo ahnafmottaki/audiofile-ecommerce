@@ -1,11 +1,10 @@
+import Hero from "../components/Hero";
+
 const Homepage = () => {
   return (
-    <div
-      style={{
-        background: "black",
-        height: "500px",
-      }}
-    ></div>
+    <>
+      <Hero />
+    </>
   );
 };
 
