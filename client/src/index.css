@@ -1,0 +1,122 @@
+@import "tailwindcss";
+@import url("./utilities.css");
+@theme {
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-primary: #d87d4a;
+  --color-secondary: #f1f1f1;
+  --color-primary-two: #fbaf85;
+  --color-black-two: #101010;
+  --color-white-two: #fafafa;
+  --color-header-bottom: #979797;
+}
+
+html {
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 16px;
+}
+
+body {
+  @apply font-medium text-[0.938rem] leading-[1.563rem];
+}
+
+button {
+  @apply font-bold text-[0.813rem] tracking-[1px] uppercase;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold text-left;
+}
+
+h1 {
+  @apply text-[3.5rem] leading-[58px] tracking-[2px];
+}
+
+h2 {
+  @apply text-[2.5rem] leading-11 tracking-[1.43px];
+}
+
+h3 {
+  @apply text-[2rem] leading-9 tracking-[1.14px];
+}
+
+h4 {
+  @apply text-[1.75rem] tracking-[2px];
+}
+
+h5 {
+  @apply text-2xl tracking-[1.71px];
+}
+
+h6 {
+  @apply text-[1.125rem] tracking-[1.29px];
+}
+/* utilities classes */
+
+.container {
+  @apply max-w-[1110px] mx-auto   max-md:px-6;
+}
+
+.overline {
+  @apply text-sm tracking-[10px] text-primary;
+}
+
+.subtitle {
+  @apply text-[0.813rem] leading-[25px] tracking-[0.93px] text-primary;
+}
+
+.primary-button,
+.secondary-button {
+  @apply px-4 py-7.5 transition-[background-color] duration-200;
+}
+
+.primary-button {
+  @apply text-white bg-primary;
+}
+
+.primary-button:hover {
+  @apply bg-primary-two;
+}
+
+.secondary-button {
+  @apply text-black border border-black;
+}
+
+.secondary-button:hover {
+  @apply bg-black text-white;
+}
+
+.link-button {
+  @apply text-black opacity-50 flex items-center gap-x-3.5 transition-colors duration-200 cursor-pointer;
+}
+
+.link-button > .icon {
+  @apply text-primary font-bold;
+}
+
+.link-button:hover {
+  @apply text-primary;
+}
+
+.icon {
+  @apply text-white transition-colors duration-200 cursor-pointer;
+}
+
+.icon:hover {
+  @apply text-primary;
+}
+
+.none {
+  @apply hidden;
+}
+
+.flex {
+  @apply flex;
+}
