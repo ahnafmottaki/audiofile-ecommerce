@@ -1,8 +1,10 @@
-const NAVIGATION_LINKS = [
-  { text: "home", href: "home" },
-  { text: "headphones", href: "headphones" },
-  { text: "speakers", href: "speakers" },
-  { text: "earphones", href: "earphones" },
-] as const;
+import headphoneImage from "../assets/shared/desktop/image-category-thumbnail-headphones.png";
+import speakerImage from "../assets/shared/desktop/image-category-thumbnail-speakers.png";
+import earphoneImage from "../assets/shared/desktop/image-category-thumbnail-earphones.png";
 
-export { NAVIGATION_LINKS };
+const CATEGORIES = [
+  { name: "headphones", url: headphoneImage },
+  { name: "speakers", url: speakerImage },
+  { name: "earphones", url: earphoneImage },
+] as const;
+export { CATEGORIES };

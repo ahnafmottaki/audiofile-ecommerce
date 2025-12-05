@@ -31,6 +31,10 @@ button {
   @apply max-w-[1110px] mx-auto;
 }
 
+.section-inline-padding {
+  @apply [1160px]:px-0 md:px-7 lg:px-10 px-5;
+}
+
 .line-over {
   @apply text-sm tracking-[10px] uppercase;
 }

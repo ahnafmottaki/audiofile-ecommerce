@@ -1,6 +1,6 @@
 import logo from "../assets/shared/desktop/logo.svg";
 import { Menu, ShoppingCart } from "lucide-react";
-import { NAVIGATION_LINKS } from "../constants/navigationLinks";
+import { CATEGORIES } from "../constants/navigationLinks";
 import { Link } from "react-router";
 const Header = () => {
   return (
@@ -16,12 +16,12 @@ const Header = () => {
         </div>
         <nav className="hidden lg:block ">
           <ul className="flex items-center gap-x-8.5 ">
-            {NAVIGATION_LINKS.map((li) => (
+            {CATEGORIES.map((li) => (
               <li
-                key={li.href}
+                key={li.name}
                 className="font-bold text-[0.813rem] leading-6 tracking-[2px] uppercase cursor-pointer transition-colors duration-200 text-white hover:text-primary"
               >
-                <Link to={li.href}>{li.text}</Link>
+                <Link to={`/${li.name}`}>{li.name}</Link>
               </li>
             ))}
           </ul>

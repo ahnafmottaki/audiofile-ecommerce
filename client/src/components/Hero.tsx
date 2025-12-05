@@ -4,8 +4,12 @@ const Hero = () => {
       <section className="bg-black max-w-[1440px] mx-auto relative h-160  max-h-[510px] sm:max-h-[640px]  overflow-hidden">
         <picture>
           <source
-            media="(min-width: 1024px)"
+            media="(min-width: 1300px)"
             srcSet="/home/desktop/image-hero.jpg"
+          />
+          <source
+            media="(min-width: 1024px)"
+            srcSet="/home/desktop/image-hero-mini.jpg"
           />
           <source
             media="(min-width: 550px)"
