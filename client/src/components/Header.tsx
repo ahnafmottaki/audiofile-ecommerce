@@ -4,7 +4,7 @@ import { CATEGORIES } from "../constants/navigationLinks";
 import { Link } from "react-router";
 const Header = () => {
   return (
-    <header className="bg-black relative max-[1150px]:px-10 max-md:px-0 ">
+    <header className="bg-black relative max-last-point:px-10 max-md:px-0 ">
       <div
         className={`container pt-8 pb-9 flex justify-between items-center border-b border-b-header-bottom max-md:px-6`}
       >

@@ -8,6 +8,12 @@
   --color-black-two: #101010;
   --color-white-two: #fafafa;
   --color-header-bottom: rgba(151, 151, 151, 0.1);
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-last-point: 1150px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 }
 
 html {
@@ -32,7 +38,7 @@ button {
 }
 
 .section-inline-padding {
-  @apply [1160px]:px-0 md:px-7 lg:px-10 px-5;
+  @apply last-point:px-0  sm:px-10 px-5;
 }
 
 .line-over {
@@ -43,8 +49,7 @@ button {
   @apply text-[0.813rem] leading-[25px] tracking-[0.93px] text-primary;
 }
 
-.primary-button,
-.secondary-button {
+button {
   @apply px-7.5 py-4 transition-[background-color] duration-200;
 }
 
@@ -65,7 +70,7 @@ button {
 }
 
 .link-button {
-  @apply text-black opacity-50 flex items-center gap-x-3.5 transition-colors duration-200 cursor-pointer;
+  @apply text-black opacity-50 flex items-center gap-x-3.5 transition-colors duration-200 cursor-pointer p-0;
 }
 
 .link-button > .icon {

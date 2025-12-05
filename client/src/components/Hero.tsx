@@ -22,7 +22,7 @@ const Hero = () => {
           />
         </picture>
 
-        <div className="container  flex flex-col justify-center items-center lg:items-start gap-y-6 md:max-[1160px]:pl-10  absolute inset-0 z-20">
+        <div className="container  flex flex-col justify-center items-center lg:items-start gap-y-6 md:max-last-point:pl-10  absolute inset-0 z-20">
           <p className="line-over text-white opacity-50">new product</p>
           <h2 className="text-white font-bold text-4xl leading-10 tracking-[1.29px] sm:text-[56px] sm:leading-14.5 sm:tracking-[2px]">
             XX99 Mark II <br /> HeadphoneS

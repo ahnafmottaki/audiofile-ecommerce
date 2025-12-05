@@ -9,7 +9,7 @@ interface CategoryProps {
 const Category: FC<CategoryProps> = ({ name, url }) => {
   return (
     <div className="h-50 max-w-[350px] w-full sm:max-w-full  bg-secondary grid grid-cols-1 grid-rows-1">
-      <div className="col-span-full row-span-full relative bottom-1/3">
+      <div className="col-span-full row-span-full relative sm:bottom-1/2 bottom-1/3">
         <img src={url} className="h-full w-full object-contain" />
       </div>
       <div className="space-y-4 flex flex-col items-center justify-end pb-7.5 col-span-full row-span-full z-10">
