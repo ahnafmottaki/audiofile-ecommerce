@@ -1,3 +1,4 @@
+import { Facebook, Instagram, Twitter } from "lucide-react";
 import Links from "./Links";
 import Logo from "./Logo";
 
@@ -5,8 +6,8 @@ const Footer = () => {
   return (
     <section className="bg-black-two ">
       <div className="relative container section-inline-padding grid justify-items-center sm:justify-items-stretch pt-13 sm:pt-15 sm:pb-11.5 pb-6">
-        <div className="w-[101px] h-1 bg-primary absolute sm:left-0 -top-px left-1/2 -translate-x-1/2"></div>
-        <div className="space-y-12 sm:space-y-8 pb-12 sm:pb-8 lg:pb-9 lg:flex lg:justify-between lg:items-center lg:space-y-0">
+        <div className="w-[101px] h-1 bg-primary absolute sm:left-10 last-point:left-0 -top-px  left-1/2 max-sm:-translate-1/2"></div>
+        <div className="space-y-12 sm:space-y-8 pb-12 sm:pb-8 lg:pb-9 lg:flex lg:justify-between lg:items-center lg:space-y-0 ">
           <div>
             <Logo />
           </div>
@@ -24,18 +25,12 @@ const Footer = () => {
           </p>
           <div className="space-y-12 sm:space-y-0 sm:flex sm:justify-between">
             <p className="font-medium text-[15px] leading-6 text-white opacity-50 text-center">
-              Copyright 2021. All Rights Reserved
+              Copyright 2025. All Rights Reserved
             </p>
             <div className="flex gap-4 items-center justify-center lg:relative bottom-16">
-              <img
-                src="/shared/desktop/icon-facebook.svg"
-                alt="facebook link"
-              />
-              <img
-                src="/shared/desktop/icon-instagram.svg"
-                alt="facebook link"
-              />
-              <img src="/shared/desktop/icon-twitter.svg" alt="facebook link" />
+              <Facebook className="text-white hover:text-primary cursor-pointer" />
+              <Instagram className="text-white hover:text-primary cursor-pointer" />
+              <Twitter className="text-white hover:text-primary cursor-pointer" />
             </div>
           </div>
         </div>

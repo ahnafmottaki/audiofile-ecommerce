@@ -12,7 +12,7 @@ const Links = () => {
           key={li.name}
           className="font-bold text-[0.813rem] leading-6 tracking-[2px] uppercase cursor-pointer transition-colors duration-200 text-white hover:text-primary"
         >
-          <Link to={`/${li.name}`}>{li.name}</Link>
+          <Link to={`/category/${li.name}`}>{li.name}</Link>
         </li>
       ))}
     </>
