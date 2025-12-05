@@ -1,4 +1,4 @@
-import logo from "../assets/shared/desktop/logo.svg";
+import logo from "/shared/desktop/logo.svg";
 import { Menu, ShoppingCart } from "lucide-react";
 import { CATEGORIES } from "../constants/navigationLinks";
 import { Link } from "react-router";
