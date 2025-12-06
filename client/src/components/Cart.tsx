@@ -5,6 +5,7 @@ import imageThree from "/cart/image-zx9-speaker.jpg";
 import type { FC } from "react";
 import QuantityAction from "./QuantityAction";
 import ShowStat from "./ShowStat";
+import { Link, useLocation } from "react-router";
 interface CartItemProps {
   src: string;
   name: string;
@@ -35,8 +36,11 @@ const CART = [
   { src: imageTwo, name: "XX59", price: 899, quantity: 2 },
   { src: imageThree, name: "YX1", price: 599, quantity: 2 },
 ];
-
-const Cart = () => {
+interface CartProps {
+  cartShowHandler: () => void;
+}
+const Cart: FC<CartProps> = ({ cartShowHandler }) => {
+  const location = useLocation();
   const totalPrice = CART.reduce((acc, item) => acc + item.price, 0);
   return createPortal(
     <section className="cart overflow-auto section-inline-padding py-6 z-99999">
@@ -58,9 +62,14 @@ const Cart = () => {
           <div>
             <ShowStat statName="Total" statResult={`$${totalPrice}`} />
           </div>
-          <button className="button primary block mx-auto mt-6">
-            checkout
-          </button>
+          <Link to={"/checkout"} state={{ from: location.pathname }}>
+            <button
+              onClick={cartShowHandler}
+              className="button primary block mx-auto mt-6"
+            >
+              checkout
+            </button>
+          </Link>
         </div>
       </div>
     </section>,

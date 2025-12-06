@@ -13,7 +13,7 @@ const Header = () => {
     <header className="bg-black sticky top-0 z-999999">
       {/* cart */}
       <Activity mode={showCart ? "visible" : "hidden"}>
-        <Cart />
+        <Cart cartShowHandler={cartShowHandler} />
       </Activity>
       <div
         className={`container h-22.5 sm:h-24 flex justify-between items-center border-b border-b-header-bottom last-point:px-0 sm:px-10 px-6`}

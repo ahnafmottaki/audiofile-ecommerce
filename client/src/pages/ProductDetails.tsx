@@ -1,4 +1,4 @@
-import { Link, useLocation, useParams } from "react-router";
+import { useParams } from "react-router";
 import data from "../data.json";
 import Product from "../components/Product";
 import InTheBox from "../components/InTheBox";
@@ -8,10 +8,10 @@ import Gallery from "../components/Gallery";
 import MayAlsoLike from "../components/MayAlsoLike";
 import Categories from "../components/Categories";
 import AboutUs from "../components/AboutUs";
+import GoBack from "../components/GoBack";
 
 const ProductDetails = () => {
   const params = useParams<{ slug: string }>();
-  const location = useLocation();
   const product = data.find((product) => product.slug === params.slug);
   if (!product) {
     return (
@@ -22,13 +22,7 @@ const ProductDetails = () => {
   }
   return (
     <section className="container section-inline-padding ">
-      <Link
-        to={location.state.from || ".."}
-        relative="route"
-        className="capitalize opacity-50 block pt-8 pb-6 hover:text-primary font-medium text-sm leading-6"
-      >
-        go back
-      </Link>
+      <GoBack />
       <div className="pb-16 min-[500px]:pb-22 md:pb-30 lg:pb-40 space-y-15 sm:space-y-22 lg:space-y-30">
         <Product page="product" {...product}>
           <h4 className="font-bold text-lg tracking-[1.29px] ">
