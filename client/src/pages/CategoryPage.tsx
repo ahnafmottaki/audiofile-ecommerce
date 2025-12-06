@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router";
+import { Link, useLocation, useParams } from "react-router";
 import data from "../data.json";
 
 import Categories from "../components/Categories";
@@ -7,6 +7,7 @@ import Product from "../components/Product";
 
 const CategoryPage = () => {
   const params = useParams<{ category: string }>();
+  const location = useLocation();
   const products = data.filter(
     (product) => product.category === params.category
   );
@@ -17,7 +18,6 @@ const CategoryPage = () => {
       </div>
     );
   }
-  console.log(products);
   return (
     <section>
       <div className="font-bold text-3xl tracking-[2px] text-center uppercase py-8 bg-black text-white">
@@ -31,7 +31,10 @@ const CategoryPage = () => {
             key={product.slug}
             index={index}
           >
-            <Link to={`/product/${product.slug}`}>
+            <Link
+              to={`/product/${product.slug}`}
+              state={{ from: location.pathname }}
+            >
               <button className="primary-button">see product</button>
             </Link>
           </Product>

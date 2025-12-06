@@ -40,12 +40,15 @@ function RenderImage({ image, className = "" }: ImageProp) {
 const Gallery: FC<GalleryProps> = ({ gallery }) => {
   return (
     <div className="space-y-5 min-[800px]:space-y-0 min-[800px]:grid grid-cols-2 gap-4.5">
-      <div className="grid grid-rows-2 gap-4 min-[800px]:gap-5">
+      <div className="grid  gap-4 min-[550px]:grid-cols-2 min-[800px]:grid-rows-2 min-[800px]:grid-cols-1 min-[800px]:gap-5">
         {[gallery.first, gallery.second].map((g, index) => (
           <RenderImage key={index} image={g} />
         ))}
       </div>
-      <RenderImage image={gallery.third} />
+      <RenderImage
+        image={gallery.third}
+        className="min-[500px]:max-h-75  min-[800px]:max-h-none"
+      />
     </div>
   );
 };
