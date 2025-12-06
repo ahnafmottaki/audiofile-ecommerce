@@ -1,8 +1,10 @@
 import { Minus, Plus } from "lucide-react";
 
-const QuantityAction = () => {
+const QuantityAction = ({ className }: { className: string }) => {
   return (
-    <button className="flex justify-center items-center gap-5 bg-secondary">
+    <div
+      className={`flex  justify-center items-center gap-5 bg-secondary ${className}`}
+    >
       <Plus
         size={13}
         className="cursor-pointer opacity-25 hover:text-primary hover:opacity-100 hover:font-bold transition-all duration-100"
@@ -12,7 +14,7 @@ const QuantityAction = () => {
         size={13}
         className="cursor-pointer opacity-25 hover:text-primary hover:opacity-100 hover:font-bold transition-all duration-100"
       />
-    </button>
+    </div>
   );
 };
 

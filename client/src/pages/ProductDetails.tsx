@@ -35,8 +35,8 @@ const ProductDetails = () => {
             $ {product.price}
           </h4>
           <div className="min-[500px]:mt-12 flex items-center gap-4">
-            <QuantityAction />
-            <button className="primary-button">add to cart</button>
+            <QuantityAction className="px-7.5 h-12" />
+            <button className="primary button">add to cart</button>
           </div>
         </Product>
         <div className="  space-y-15 sm:space-y-22  lg:space-y-0 lg:flex lg:*:nth-[1]:max-w-[635px] lg:justify-between">

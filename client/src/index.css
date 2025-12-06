@@ -27,10 +27,6 @@ body {
   @apply font-medium text-[0.938rem] leading-[1.563rem];
 }
 
-button {
-  @apply font-bold text-[0.813rem] tracking-[1px] uppercase;
-}
-
 /* utilities classes */
 
 .container {
@@ -38,7 +34,7 @@ button {
 }
 
 .section-inline-padding {
-  @apply last-point:px-0  sm:px-10 px-5;
+  @apply last-point:px-0  sm:px-10 px-6;
 }
 
 .line-over {
@@ -50,39 +46,47 @@ button {
 }
 
 button {
-  @apply px-7.5 py-4 transition-[background-color] duration-200;
+  @apply font-bold text-[0.813rem] tracking-[1px];
 }
 
-.primary-button {
+.button {
+  @apply uppercase px-7.5 h-12 flex items-center transition-[background-color] duration-200;
+}
+
+.button.primary {
   @apply text-white bg-primary;
 }
 
-.primary-button:hover {
+.button.primary:hover {
   @apply bg-primary-two;
 }
 
-.secondary-button {
+.button.secondary {
   @apply text-black border border-black;
 }
 
-.secondary-button:hover {
+.button.secondary:hover {
   @apply bg-black text-white;
 }
 
-.link-button {
+.button.link {
   @apply text-black opacity-50 flex items-center gap-x-3.5 transition-colors duration-200 cursor-pointer p-0;
 }
 
-.link-button > .icon {
+.button.link > .icon {
   @apply text-primary font-bold;
 }
 
-.link-button:hover {
+.button.link:hover {
   @apply text-primary;
 }
 
 .icon {
   @apply text-white transition-colors duration-200 cursor-pointer;
+}
+
+.icon.active {
+  @apply text-primary;
 }
 
 .icon:hover {
@@ -95,4 +99,11 @@ button {
 
 .flex {
   @apply flex;
+}
+
+.cart {
+  @apply fixed left-0 top-22.5 sm:top-24 h-[calc(100vh-90px)] sm:h-[calc(100vh-96px)] bg-[rgba(0,0,0,0.5)] w-full opacity-100 transition-opacity duration-200;
+  @starting-style {
+    opacity: 0;
+  }
 }

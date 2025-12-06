@@ -19,7 +19,7 @@ const MayAlsoLike: FC<MayAlsoLikeProps> = ({ others }) => {
       </h1>
       <div className=" gap-14 grid @[680px]:grid-cols-3 ">
         {others.map((p) => (
-          <div>
+          <div key={p.slug}>
             <div>
               <picture>
                 <source media="(min-width: 1110px)" srcSet={p.image.desktop} />
@@ -34,7 +34,7 @@ const MayAlsoLike: FC<MayAlsoLikeProps> = ({ others }) => {
             <h2 className="my-8 font-bold text-2xl tracking-[1.71px] text-center">
               {p.name}
             </h2>
-            <button className="primary-button block mx-auto">
+            <button className="button primary block mx-auto">
               see product
             </button>
           </div>

@@ -35,7 +35,7 @@ const CategoryPage = () => {
               to={`/product/${product.slug}`}
               state={{ from: location.pathname }}
             >
-              <button className="primary-button">see product</button>
+              <button className="primary button">see product</button>
             </Link>
           </Product>
         ))}

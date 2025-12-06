@@ -21,7 +21,7 @@ const PopularProductOne = () => {
           Upgrade to premium speakers that are phenomenally built to deliver
           truly remarkable sound.
         </p>
-        <button className="bg-black text-white hover:bg-[rgba(0,0,0,0.6)]">
+        <button className="px-7.5 h-12 uppercase  bg-black  text-white hover:bg-[rgba(0,0,0,0.6)]">
           see product
         </button>
       </div>
@@ -48,7 +48,7 @@ const PopularProductTwo = () => {
       </picture>
       <div className=" col-span-full row-span-full flex flex-col justify-center items-start gap-8 pl-6 sm:pl-15.5 z-10">
         <h1 className="font-bold text-3xl">ZX7 SPEAKER</h1>
-        <button className="secondary-button">see product</button>
+        <button className="button secondary">see product</button>
       </div>
     </div>
   );
@@ -75,7 +75,7 @@ const PopularProductThree = () => {
       </div>
       <div className="flex flex-col justify-center items-start  pl-6 sm:pl-12 md:pl-18 lg:pl-24 space-y-8 bg-secondary rounded-lg ">
         <h1 className="font-bold text-3xl  tracking-[2px]">YX1 EARPHONES</h1>
-        <button className="secondary-button">see product</button>
+        <button className="secondary button">see product</button>
       </div>
     </div>
   );

@@ -1,0 +1,18 @@
+import type { FC } from "react";
+
+interface ShowStatProps {
+  statName: string;
+  statResult: string;
+}
+const ShowStat: FC<ShowStatProps> = ({ statName, statResult }) => {
+  return (
+    <div className="flex items-center justify-between">
+      <span className="font-medium text-[15px] leading-6 opacity-50">
+        {statName}
+      </span>
+      <span className="font-bold text-lg">{statResult}</span>
+    </div>
+  );
+};
+
+export default ShowStat;

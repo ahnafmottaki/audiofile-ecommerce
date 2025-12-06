@@ -16,7 +16,7 @@ const Category: FC<CategoryProps> = ({ name, url }) => {
         <h3 className="font-bold text-lg tracking-[1.29px] uppercase">
           {name}
         </h3>
-        <button className="link-button">
+        <button className="button link">
           shop <ChevronRight size={18} className="text-primary" />
         </button>
       </div>
@@ -28,7 +28,7 @@ const Categories = () => {
   return (
     <section className="container section-inline-padding py-40  lg:pt-50 lg:pb-42 grid grid-cols-1 sm:grid-cols-3 sm:gap-7.5 gap-18  justify-items-center sm:justify-items-stretch ">
       {CATEGORIES.map((category) => (
-        <Category name={category.name} url={category.url} />
+        <Category key={category.name} name={category.name} url={category.url} />
       ))}
     </section>
   );

@@ -32,7 +32,7 @@ const Hero = () => {
               Experience natural, lifelike audio and exceptional build quality
               made for the passionate music enthusiast.
             </p>
-            <button className="primary-button mt-10 mx-auto lg:mx-0 block">
+            <button className="button primary mt-10 mx-auto lg:mx-0 block">
               see product
             </button>
           </div>
