@@ -2,34 +2,11 @@ import { createPortal } from "react-dom";
 import imageOne from "/cart/image-xx59-headphones.jpg";
 import imageTwo from "/cart/image-yx1-earphones.jpg";
 import imageThree from "/cart/image-zx9-speaker.jpg";
-import type { FC } from "react";
+import type { FC, ReactNode } from "react";
 import QuantityAction from "./QuantityAction";
 import ShowStat from "./ShowStat";
 import { Link, useLocation } from "react-router";
-interface CartItemProps {
-  src: string;
-  name: string;
-  price: number;
-  quantity: number;
-}
-const CartItem: FC<CartItemProps> = ({ src, name, price, quantity }) => {
-  return (
-    <div className="flex justify-between items-center">
-      <div className="flex gap-4 items-center">
-        <div className="h-16 aspect-square rounded-lg overflow-hidden">
-          <img src={src} alt={name} />
-        </div>
-        <div>
-          <h4 className="font-bold text-[15px] leading-6 uppercase">{name}</h4>
-          <h5 className="font-bold text-sm leading-6 opacity-50">
-            ${price * quantity}
-          </h5>
-        </div>
-      </div>
-      <QuantityAction className="px-3 py-2" />
-    </div>
-  );
-};
+import ProductStat from "./ProductStat";
 
 const CART = [
   { src: imageOne, name: "XX99 MK II", price: 2999, quantity: 1 },
@@ -56,7 +33,9 @@ const Cart: FC<CartProps> = ({ cartShowHandler }) => {
           </div>
           <div className="my-8 space-y-6">
             {CART.map((item) => (
-              <CartItem key={item.name} {...item} />
+              <ProductStat key={item.name} {...item}>
+                <QuantityAction className="px-3 py-2" />
+              </ProductStat>
             ))}
           </div>
           <div>

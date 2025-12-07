@@ -28,7 +28,7 @@ const Header = () => {
           </ul>
         </nav>
         <div onClick={cartShowHandler}>
-          <ShoppingCart className={`icon ${showCart ? " active " : ""}`} />
+          <ShoppingCart className={`icon ${showCart ? "active" : ""}`} />
         </div>
       </div>
     </header>

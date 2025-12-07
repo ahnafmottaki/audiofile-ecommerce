@@ -31,7 +31,11 @@ function RenderImage({ image, className = "" }: ImageProp) {
       <picture>
         <source media="(min-width: 500px)" srcSet={image.tablet} />
         <source media="(min-width: 1024)" srcSet={image.desktop} />
-        <img src={image.mobile} alt="image one" className="w-full h-full " />
+        <img
+          src={image.mobile}
+          alt="image one"
+          className="w-full h-full object-cover"
+        />
       </picture>
     </div>
   );
@@ -39,16 +43,22 @@ function RenderImage({ image, className = "" }: ImageProp) {
 
 const Gallery: FC<GalleryProps> = ({ gallery }) => {
   return (
-    <div className="space-y-5 min-[800px]:space-y-0 min-[800px]:grid grid-cols-2 gap-4.5">
-      <div className="grid  gap-4 min-[550px]:grid-cols-2 min-[800px]:grid-rows-2 min-[800px]:grid-cols-1 min-[800px]:gap-5">
-        {[gallery.first, gallery.second].map((g, index) => (
-          <RenderImage key={index} image={g} />
-        ))}
+    <div className="@container">
+      <div className="space-y-5 @min-[700px]:space-y-0 @min-[700px]:grid  grid-cols-2 gap-4.5">
+        <div className="gap-4 flex flex-col">
+          {[gallery.first, gallery.second].map((g, index) => (
+            <RenderImage
+              key={index}
+              image={g}
+              className="@min-[700px]:max-h-[280px]"
+            />
+          ))}
+        </div>
+        <RenderImage
+          image={gallery.third}
+          className="@min-[700px]:max-h-[592px]"
+        />
       </div>
-      <RenderImage
-        image={gallery.third}
-        className="min-[500px]:max-h-75  min-[800px]:max-h-none"
-      />
     </div>
   );
 };
