@@ -1,20 +1,18 @@
-import type { ReactNode } from "react";
+import type { FC, ReactNode } from "react";
 import GoBack from "../components/GoBack";
 import Input from "../components/Input";
 import Radio from "../components/Radio";
-import imageOne from "/cart/image-xx59-headphones.jpg";
-import imageTwo from "/cart/image-yx1-earphones.jpg";
-import imageThree from "/cart/image-zx9-speaker.jpg";
 import ProductStat from "../components/ProductStat";
 import ShowStat from "../components/ShowStat";
+import { useAppSelector } from "../store/hooks";
 
-const CheckoutItemWrapper = ({
+interface CheckoutItemWrapperProps {
+  label: string;
+  children: ReactNode;
+}
+const CheckoutItemWrapper: FC<CheckoutItemWrapperProps> = ({
   label,
   children,
-}: {
-  label: string;
-
-  children: ReactNode;
 }) => {
   return (
     <div className={"space-y-6 "}>
@@ -26,11 +24,52 @@ const CheckoutItemWrapper = ({
   );
 };
 
-const CART = [
-  { src: imageOne, name: "XX99 MK II", price: 2999, quantity: 1 },
-  { src: imageTwo, name: "XX59", price: 899, quantity: 2 },
-  { src: imageThree, name: "YX1", price: 599, quantity: 2 },
-];
+const CheckoutSummary = () => {
+  const { items, total, vat, shippingCost } = useAppSelector(
+    (state) => state.cart,
+  );
+  const totalVat = vat * total;
+  const grandTotal = (total * 100 + totalVat + shippingCost * 100) / 100;
+  return (
+    <div className="mt-8 py-8 lg:mt-0 px-6 rounded-lg bg-white lg:max-w-[350px] lg:w-full">
+      <h1 className="font-bold text-lg tracking-[1.29px] uppercase">summary</h1>
+      <div className="py-8 space-y-6">
+        {items.map((item) => (
+          <ProductStat
+            key={item.id}
+            name={item.name}
+            price={item.price}
+            quantity={item.quantity}
+            src={item.image}
+          >
+            <span className="font-bold text-[15px] leading-6 opacity-50">
+              x{item.quantity}
+            </span>
+          </ProductStat>
+        ))}
+      </div>
+      <div className="mt-8 mb-6 space-y-2">
+        <ShowStat statName="Total" statResult={"$" + total.toString()} />
+        <ShowStat
+          statName="shipping"
+          statResult={"$" + shippingCost.toString()}
+        />
+        <ShowStat
+          statName="Vat (included)"
+          statResult={"$" + String(totalVat / 100)}
+        />
+      </div>
+      <ShowStat
+        statName="grand total"
+        statResult={"$" + String(grandTotal)}
+        className="text-primary"
+      />
+      <button className="button primary mt-8 block mx-auto">
+        continue & pay
+      </button>
+    </div>
+  );
+};
 
 const Checkout = () => {
   return (
@@ -134,33 +173,7 @@ const Checkout = () => {
               </CheckoutItemWrapper>
             </form>
           </div>
-          <div className="mt-8 py-8 lg:mt-0 px-6 rounded-lg bg-white lg:max-w-[350px] lg:w-full">
-            <h1 className="font-bold text-lg tracking-[1.29px] uppercase">
-              summary
-            </h1>
-            <div className="py-8 space-y-6">
-              {CART.map((item) => (
-                <ProductStat {...item} key={item.name}>
-                  <span className="font-bold text-[15px] leading-6 opacity-50">
-                    x{item.quantity}
-                  </span>
-                </ProductStat>
-              ))}
-            </div>
-            <div className="mt-8 mb-6 space-y-2">
-              <ShowStat statName="Total" statResult="$5396" />
-              <ShowStat statName="shipping" statResult="$50" />
-              <ShowStat statName="Vat (included)" statResult="$1079" />
-            </div>
-            <ShowStat
-              statName="grand total"
-              statResult="$5446"
-              className="text-primary"
-            />
-            <button className="button primary mt-8 block mx-auto">
-              continue & pay
-            </button>
-          </div>
+          <CheckoutSummary />
         </div>
       </div>
     </section>

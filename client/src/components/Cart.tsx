@@ -1,14 +1,15 @@
 import { createPortal } from "react-dom";
-import imageOne from "/cart/image-xx59-headphones.jpg";
-import imageTwo from "/cart/image-yx1-earphones.jpg";
-import imageThree from "/cart/image-zx9-speaker.jpg";
 import type { FC, MouseEvent, ReactNode } from "react";
 import QuantityAction from "./QuantityAction";
 import ShowStat from "./ShowStat";
 import { Link, useLocation } from "react-router";
 import ProductStat from "./ProductStat";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { decreaseQuantity, increaseQuantity } from "../features/cart";
+import {
+  clearCart,
+  decreaseQuantity,
+  increaseQuantity,
+} from "../features/cart";
 
 const CartContentWrapper = ({
   children,
@@ -65,7 +66,10 @@ const Cart: FC<CartProps> = ({ cartShowHandler }) => {
             <h3 className="font-bold text-lg tracking-[1.29px] uppercase">
               cart (<span>{items.length}</span>)
             </h3>
-            <button className="font-medium text-[15px] leading-6 opacity-50 underline cursor-pointer">
+            <button
+              className="font-medium text-[15px] leading-6 opacity-50 underline cursor-pointer"
+              onClick={() => dispatch(clearCart())}
+            >
               Remove All
             </button>
           </div>

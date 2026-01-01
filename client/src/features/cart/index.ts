@@ -12,7 +12,8 @@ interface Cart {
   shippingCost: number;
   vat: number;
 }
-const initialState: Cart = {
+const initialState: Cart = (localStorage.getItem("cart") &&
+  JSON.parse(localStorage.getItem("cart")!)) || {
   items: [],
   total: 0,
   shippingCost: 50,
