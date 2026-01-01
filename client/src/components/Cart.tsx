@@ -2,7 +2,7 @@ import { createPortal } from "react-dom";
 import imageOne from "/cart/image-xx59-headphones.jpg";
 import imageTwo from "/cart/image-yx1-earphones.jpg";
 import imageThree from "/cart/image-zx9-speaker.jpg";
-import type { FC, ReactNode } from "react";
+import type { FC, MouseEvent } from "react";
 import QuantityAction from "./QuantityAction";
 import ShowStat from "./ShowStat";
 import { Link, useLocation } from "react-router";
@@ -13,21 +13,32 @@ const CART = [
   { src: imageTwo, name: "XX59", price: 899, quantity: 2 },
   { src: imageThree, name: "YX1", price: 599, quantity: 2 },
 ];
+
 interface CartProps {
   cartShowHandler: () => void;
 }
 const Cart: FC<CartProps> = ({ cartShowHandler }) => {
   const location = useLocation();
   const totalPrice = CART.reduce((acc, item) => acc + item.price, 0);
+
+  const onOverlayClick = (event: MouseEvent<HTMLDivElement>) => {
+    if (event.target === event.currentTarget) {
+      cartShowHandler();
+    }
+  };
+
   return createPortal(
-    <section className="cart overflow-auto section-inline-padding py-6 z-99999">
-      <div className="container">
+    <section
+      className="cart overflow-auto section-inline-padding py-6 z-99999"
+      onClick={onOverlayClick}
+    >
+      <div className="container" onClick={onOverlayClick}>
         <div className="rounded-lg bg-white px-7 py-8 max-w-[377px] ml-auto">
           <div className="flex justify-between items-center">
             <h3 className="font-bold text-lg tracking-[1.29px] uppercase">
               cart (<span>3</span>)
             </h3>
-            <button className="font-medium text-[15px] leading-6 opacity-50 underline">
+            <button className="font-medium text-[15px] leading-6 opacity-50 underline cursor-pointer">
               Remove All
             </button>
           </div>
@@ -52,7 +63,7 @@ const Cart: FC<CartProps> = ({ cartShowHandler }) => {
         </div>
       </div>
     </section>,
-    document.getElementById("modal-div")!
+    document.getElementById("modal-div")!,
   );
 };
 
