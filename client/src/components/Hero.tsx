@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 const Hero = () => {
   return (
     <div className="bg-[#191919]">
@@ -32,9 +34,11 @@ const Hero = () => {
               Experience natural, lifelike audio and exceptional build quality
               made for the passionate music enthusiast.
             </p>
-            <button className="button primary mt-10 mx-auto lg:mx-0 block">
-              see product
-            </button>
+            <Link to={`product/xx99-mark-two-headphones`}>
+              <button className="button primary mt-10 mx-auto lg:mx-0 block">
+                see product
+              </button>
+            </Link>
           </div>
         </div>
       </section>

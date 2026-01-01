@@ -20,25 +20,24 @@ const ProductDetails = () => {
       </div>
     );
   }
+  const { price, features, includes, gallery, others } = product;
   return (
     <section className="container section-inline-padding ">
       <GoBack />
       <div className="pb-16 min-[500px]:pb-22 md:pb-30 lg:pb-40 space-y-15 sm:space-y-22 lg:space-y-30">
         <Product page="product" {...product}>
-          <h4 className="font-bold text-lg tracking-[1.29px] ">
-            $ {product.price}
-          </h4>
+          <h4 className="font-bold text-lg tracking-[1.29px] ">$ {price}</h4>
           <div className="min-[500px]:mt-12 flex items-center gap-4">
             <QuantityAction className="px-7.5 h-12" />
             <button className="primary button">add to cart</button>
           </div>
         </Product>
         <div className="  space-y-15 sm:space-y-22  lg:space-y-0 lg:flex lg:*:nth-[1]:max-w-[635px] lg:justify-between">
-          <Features features={product.features} />
-          <InTheBox includes={product.includes} />
+          <Features features={features} />
+          <InTheBox includes={includes} />
         </div>
-        <Gallery gallery={product.gallery} />
-        <MayAlsoLike others={product.others} />
+        <Gallery gallery={gallery} />
+        <MayAlsoLike others={others} />
       </div>
       <Categories />
       <AboutUs />

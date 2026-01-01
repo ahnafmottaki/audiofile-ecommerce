@@ -38,6 +38,12 @@ const Product: FC<ProductProps> = ({ page, index, children, ...product }) => {
     .trim()
     .split(product.category)[0];
 
+  const {
+    image: { tablet, desktop, mobile },
+    category,
+    name,
+  } = product;
+
   return (
     <div
       className={`grid gap-8  min-[500px]:gap-13 ${classNames[page].parentDiv}  lg:gap-31`}
@@ -48,12 +54,12 @@ const Product: FC<ProductProps> = ({ page, index, children, ...product }) => {
         }`}
       >
         <picture className="w-full h-full">
-          <source media="(min-width: 500px)" srcSet={product.image.tablet} />
-          <source media="(min-width: 1024px)" srcSet={product.image.desktop} />
+          <source media="(min-width: 500px)" srcSet={tablet} />
+          <source media="(min-width: 1024px)" srcSet={desktop} />
           <img
             className=" w-full h-full object-cover min-[500px]:object-none"
-            src={product.image.mobile}
-            alt={product.name}
+            src={mobile}
+            alt={name}
           />
         </picture>
       </div>
@@ -66,7 +72,7 @@ const Product: FC<ProductProps> = ({ page, index, children, ...product }) => {
         >
           {productName}
           <br />
-          {product.category}
+          {category}
         </h1>
         <p className="font-medium leading-6 opacity-50  lg:text-left min-[500px]:mt-8 min-[500px]:mb-6 min-[500px]:max-w-[572px] lg:max-w-[445px]">
           The new XX99 Mark II headphones is the pinnacle of pristine audio. It
