@@ -7,13 +7,8 @@ import QuantityAction from "./QuantityAction";
 import ShowStat from "./ShowStat";
 import { Link, useLocation } from "react-router";
 import ProductStat from "./ProductStat";
-import { useAppSelector } from "../store/hooks";
-
-const CART = [
-  { src: imageOne, name: "XX99 MK II", price: 2999, quantity: 1 },
-  { src: imageTwo, name: "XX59", price: 899, quantity: 2 },
-  { src: imageThree, name: "YX1", price: 599, quantity: 2 },
-];
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { decreaseQuantity, increaseQuantity } from "../features/cart";
 
 const CartContentWrapper = ({
   children,
@@ -42,6 +37,7 @@ interface CartProps {
 const Cart: FC<CartProps> = ({ cartShowHandler }) => {
   const location = useLocation();
   const { items, total: totalPrice } = useAppSelector((state) => state.cart);
+  const dispatch = useAppDispatch();
 
   const onOverlayClick = (event: MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
@@ -49,49 +45,61 @@ const Cart: FC<CartProps> = ({ cartShowHandler }) => {
     }
   };
 
-  if (items.length === 0) {
-    return (
-      <CartContentWrapper onClose={onOverlayClick}>
-        <div className="flex justify-between items-center">
-          <h3 className="font-bold text-lg tracking-[1.29px] uppercase">
-            cart (<span>0</span>)
-          </h3>
-        </div>
-        <div className="my-8 space-y-6">
-          <p className="text-center font-medium">Your cart is empty.</p>
-        </div>
-      </CartContentWrapper>
-    );
-  }
-
   return createPortal(
     <CartContentWrapper onClose={onOverlayClick}>
-      <div className="flex justify-between items-center">
-        <h3 className="font-bold text-lg tracking-[1.29px] uppercase">
-          cart (<span>3</span>)
-        </h3>
-        <button className="font-medium text-[15px] leading-6 opacity-50 underline cursor-pointer">
-          Remove All
-        </button>
-      </div>
-      <div className="my-8 space-y-6">
-        {CART.map((item) => (
-          <ProductStat key={item.name} {...item}>
-            <QuantityAction className="px-3 py-2" />
-          </ProductStat>
-        ))}
-      </div>
-      <div>
-        <ShowStat statName="Total" statResult={`$${totalPrice}`} />
-      </div>
-      <Link to={"/checkout"} state={{ from: location.pathname }}>
-        <button
-          onClick={cartShowHandler}
-          className="button primary block mx-auto mt-6"
-        >
-          checkout
-        </button>
-      </Link>
+      {items.length === 0 && (
+        <>
+          <div className="flex justify-between items-center">
+            <h3 className="font-bold text-lg tracking-[1.29px] uppercase">
+              cart (<span>{items.length}</span>)
+            </h3>
+          </div>
+          <div className="my-8 space-y-6">
+            <p className="text-center font-medium">Your cart is empty.</p>
+          </div>
+        </>
+      )}
+      {items.length !== 0 && (
+        <>
+          <div className="flex justify-between items-center">
+            <h3 className="font-bold text-lg tracking-[1.29px] uppercase">
+              cart (<span>{items.length}</span>)
+            </h3>
+            <button className="font-medium text-[15px] leading-6 opacity-50 underline cursor-pointer">
+              Remove All
+            </button>
+          </div>
+          <div className="my-8 space-y-6">
+            {items.map((item) => (
+              <ProductStat
+                key={item.id}
+                src={item.image}
+                name={item.name}
+                price={item.price}
+                quantity={item.quantity}
+              >
+                <QuantityAction
+                  quantity={item.quantity}
+                  className="px-3 py-2"
+                  onIncrease={() => dispatch(increaseQuantity(item.id))}
+                  onDecrease={() => dispatch(decreaseQuantity(item.id))}
+                />
+              </ProductStat>
+            ))}
+          </div>
+          <div>
+            <ShowStat statName="Total" statResult={`$${totalPrice}`} />
+          </div>
+          <Link to={"/checkout"} state={{ from: location.pathname }}>
+            <button
+              onClick={cartShowHandler}
+              className="button primary block mx-auto mt-6"
+            >
+              checkout
+            </button>
+          </Link>
+        </>
+      )}
     </CartContentWrapper>,
     document.getElementById("modal-div")!,
   );

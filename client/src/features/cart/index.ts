@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 interface CartItem {
-  id: string;
+  id: number;
   name: string;
   price: number;
   quantity: number;
@@ -45,7 +45,7 @@ const cartSlice = createSlice({
       }
     },
 
-    removeItem(state, action: { type: string; payload: string }) {
+    removeItem(state, action: { type: string; payload: number }) {
       const itemId = action.payload;
       const existingItemIndex = state.items.findIndex(
         (item) => item.id === itemId,
@@ -57,22 +57,32 @@ const cartSlice = createSlice({
       }
     },
 
-    increaseQuantity(state, action: { type: string; payload: string }) {
+    increaseQuantity(state, action: { type: string; payload: number }) {
       const existingItem = state.items.find(
         (item) => item.id === action.payload,
       );
       if (!existingItem) return;
-      existingItem.quantity =
-        existingItem.quantity < 3 ? existingItem.quantity + 1 : 3;
+      const existingQuantity = existingItem.quantity;
+      existingItem.quantity = existingQuantity < 3 ? existingQuantity + 1 : 3;
+      if (existingQuantity !== 3) {
+        state.total += existingItem.price;
+      }
     },
 
-    decreaseQuantity(state, action: { type: string; payload: string }) {
-      const existingItem = state.items.find(
+    decreaseQuantity(state, action: { type: string; payload: number }) {
+      const existingItemIndex = state.items.findIndex(
         (item) => item.id === action.payload,
       );
-      if (!existingItem) return;
-      existingItem.quantity =
-        existingItem.quantity > 1 ? existingItem.quantity - 1 : 1;
+      if (existingItemIndex === -1) return;
+      const existingItem = state.items[existingItemIndex];
+      const existingQuantity = existingItem.quantity;
+      if (existingQuantity === 1) {
+        state.total -= existingItem.price * existingQuantity;
+        state.items.splice(existingItemIndex, 1);
+      } else {
+        existingItem.quantity = existingQuantity - 1;
+        state.total -= existingItem.price;
+      }
     },
 
     clearCart(state) {
