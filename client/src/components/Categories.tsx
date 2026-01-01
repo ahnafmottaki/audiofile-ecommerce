@@ -1,6 +1,7 @@
 import { ChevronRight } from "lucide-react";
 import type { FC } from "react";
 import { CATEGORIES } from "../constants/navigationLinks";
+import { Link } from "react-router";
 
 interface CategoryProps {
   name: string;
@@ -16,9 +17,11 @@ const Category: FC<CategoryProps> = ({ name, url }) => {
         <h3 className="font-bold text-lg tracking-[1.29px] uppercase">
           {name}
         </h3>
-        <button className="button link">
-          shop <ChevronRight size={18} className="text-primary" />
-        </button>
+        <Link to={`/category/${name}`}>
+          <button className="button link">
+            shop <ChevronRight size={18} className="text-primary" />
+          </button>
+        </Link>
       </div>
     </div>
   );

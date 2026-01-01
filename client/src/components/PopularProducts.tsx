@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import speakerImage from "/home/desktop/image-speaker-zx9.png";
 
 const PopularProductOne = () => {
@@ -21,9 +22,11 @@ const PopularProductOne = () => {
           Upgrade to premium speakers that are phenomenally built to deliver
           truly remarkable sound.
         </p>
-        <button className="px-7.5 h-12 uppercase  bg-black  text-white hover:bg-[rgba(0,0,0,0.6)]">
-          see product
-        </button>
+        <Link to={`/product/zx9-speaker`}>
+          <button className="px-7.5 h-12 uppercase  bg-black  text-white hover:bg-[rgba(0,0,0,0.6)]">
+            see product
+          </button>
+        </Link>
       </div>
     </div>
   );
@@ -48,7 +51,9 @@ const PopularProductTwo = () => {
       </picture>
       <div className=" col-span-full row-span-full flex flex-col justify-center items-start gap-8 pl-6 sm:pl-15.5 z-10">
         <h1 className="font-bold text-3xl">ZX7 SPEAKER</h1>
-        <button className="button secondary">see product</button>
+        <Link to={"product/zx7-speaker"}>
+          <button className="button secondary">see product</button>
+        </Link>
       </div>
     </div>
   );
@@ -57,7 +62,7 @@ const PopularProductTwo = () => {
 const PopularProductThree = () => {
   return (
     <div className="grid gap-6 grid-rows-[200px_200px] sm:grid-rows-[250px] md:grid-rows-[320px] sm:grid-cols-2 ">
-      <div className="rounded-lg overflow-hidden">
+      <div className="rounded-lg overflow-hidden ">
         <picture className="h-full w-full">
           <source
             media="(min-width: 1024px)"
@@ -75,7 +80,9 @@ const PopularProductThree = () => {
       </div>
       <div className="flex flex-col justify-center items-start  pl-6 sm:pl-12 md:pl-18 lg:pl-24 space-y-8 bg-secondary rounded-lg ">
         <h1 className="font-bold text-3xl  tracking-[2px]">YX1 EARPHONES</h1>
-        <button className="secondary button">see product</button>
+        <Link to={"product/yx1-earphones"}>
+          <button className="secondary button">see product</button>
+        </Link>
       </div>
     </div>
   );
