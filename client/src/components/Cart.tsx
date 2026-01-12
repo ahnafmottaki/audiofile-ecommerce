@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom";
-import type { FC, MouseEvent, ReactNode } from "react";
+import { useCallback, type FC, type MouseEvent, type ReactNode } from "react";
 import QuantityAction from "./QuantityAction";
 import ShowStat from "./ShowStat";
 import { Link, useLocation } from "react-router";
@@ -40,10 +40,17 @@ const Cart: FC<CartProps> = ({ cartShowHandler }) => {
   const { items, total: totalPrice } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
 
-  const onOverlayClick = (event: MouseEvent<HTMLDivElement>) => {
-    if (event.target === event.currentTarget) {
-      cartShowHandler();
-    }
+  const onOverlayClick = useCallback(
+    (event: MouseEvent<HTMLDivElement>) => {
+      if (event.target === event.currentTarget) {
+        cartShowHandler();
+      }
+    },
+    [cartShowHandler],
+  );
+
+  const onRemoveAll = () => {
+    dispatch(clearCart());
   };
 
   return createPortal(
@@ -68,7 +75,7 @@ const Cart: FC<CartProps> = ({ cartShowHandler }) => {
             </h3>
             <button
               className="font-medium text-[15px] leading-6 opacity-50 underline cursor-pointer"
-              onClick={() => dispatch(clearCart())}
+              onClick={onRemoveAll}
             >
               Remove All
             </button>

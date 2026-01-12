@@ -10,8 +10,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-black sticky top-0 z-999999">
-      {/* cart */}
+    <header className="bg-black sticky top-0 z-999">
       <Activity mode={showCart ? "visible" : "hidden"}>
         <Cart cartShowHandler={cartShowHandler} />
       </Activity>

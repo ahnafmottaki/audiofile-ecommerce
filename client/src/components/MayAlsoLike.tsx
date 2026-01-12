@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import { Link } from "react-router";
 
 interface MayAlsoLikeProps {
   others: {
@@ -34,9 +35,11 @@ const MayAlsoLike: FC<MayAlsoLikeProps> = ({ others }) => {
             <h2 className="my-8 font-bold text-2xl tracking-[1.71px] text-center">
               {p.name}
             </h2>
-            <button className="button primary block mx-auto">
-              see product
-            </button>
+            <Link to={`/product/${p.slug}`}>
+              <button className="button primary block mx-auto">
+                see product
+              </button>
+            </Link>
           </div>
         ))}
       </div>

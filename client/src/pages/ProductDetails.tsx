@@ -12,6 +12,7 @@ import GoBack from "../components/GoBack";
 import { useCallback, useState } from "react";
 import { useAppDispatch } from "../store/hooks";
 import { addItem } from "../features/cart";
+import { toast } from "react-toastify";
 
 const ProductDetails = () => {
   const params = useParams<{ slug: string }>();
@@ -59,6 +60,7 @@ const ProductDetails = () => {
         quantity: quantity,
       }),
     );
+    toast.success("Item added to cart");
   };
 
   return (

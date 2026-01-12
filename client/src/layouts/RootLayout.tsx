@@ -3,6 +3,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useEffect } from "react";
 import { useAppSelector } from "../store/hooks";
+import ToastifyContainer from "../components/ToastifyContainer";
 const RootLayout = () => {
   const cart = useAppSelector((state) => state.cart);
 
@@ -12,6 +13,7 @@ const RootLayout = () => {
 
   return (
     <>
+      <ToastifyContainer />
       <Header />
       <main>
         <Outlet />
